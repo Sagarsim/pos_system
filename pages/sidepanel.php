@@ -5,7 +5,7 @@ if(!isset($_SESSION["id"])){
     header("Location: login.php?error=unauthorised");
     exit();
 }
-?> 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -71,7 +71,7 @@ if(!isset($_SESSION["id"])){
                 </ul>
 
                 <ul class="nav navbar-right navbar-top-links">
-                    
+
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i> <?php echo $_SESSION['fname']." ".$_SESSION['lname'];?> <b class="caret"></b>
@@ -101,7 +101,7 @@ if(!isset($_SESSION["id"])){
                             <li>
                                 <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
-                            
+
                             <li>
                                 <a href="tables.php"><i class="fa fa-users fa-fw"></i> Manage Users</a>
                             </li>
@@ -110,6 +110,9 @@ if(!isset($_SESSION["id"])){
                             </li>
                             <li>
                                 <a href="tables3.php"><i class="fa fa-clipboard fa-fw"></i> Customers</a>
+                            </li>
+                            <li>
+                                <a href="tables4.php"><i class="fa fa-clipboard fa-fw"></i>Manage Stock</a>
                             </li>
                         </ul>
                     </div>
