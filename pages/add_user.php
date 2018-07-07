@@ -167,3 +167,49 @@ if(isset($_POST['edit_user'])){
 						
 					
 					}
+					if(isset($_POST['add_stock'])){
+						session_start();
+						
+						$iname =mysqli_real_escape_string($conn, $_POST['iname']);
+						$icode =mysqli_real_escape_string($conn, $_POST['icode']);
+						$eid =mysqli_real_escape_string($conn, $_POST['eid']);
+						$rec =mysqli_real_escape_string($conn, $_POST['rec_quantity']);
+						$daily = mysqli_real_escape_string($conn, $_POST['daily_quantity']);
+						$avai = mysqli_real_escape_string($conn, $_POST['avai_quantity']);
+					
+						$sql = "INSERT INTO `tbl_item_stock` (`item_code`,`item_name`, `employee_id`, `recorded_quantity`, `daily_sell_quantity`, `available_quantity`) 
+							VALUES ('$icode','$iname', '$eid', '$rec', '$daily', '$avai')";
+						
+							$result = $conn->query($sql);
+						
+							header("Location: tables4.php?error=success_add");
+							
+						
+						}
+				
+						if(isset($_POST['edit_stock'])){
+							session_start();
+							
+							$iname =mysqli_real_escape_string($conn, $_POST['iname']);
+						$icode =mysqli_real_escape_string($conn, $_POST['icode']);
+						$eid =mysqli_real_escape_string($conn, $_POST['eid']);
+						$rec =mysqli_real_escape_string($conn, $_POST['rec_quantity']);
+						$daily = mysqli_real_escape_string($conn, $_POST['daily_quantity']);
+						$avai = mysqli_real_escape_string($conn, $_POST['avai_quantity']);
+						$editid=mysqli_real_escape_string($conn, $_POST['editid']);		
+								
+									$encrypted_password=password_hash($passwordcon, PASSWORD_DEFAULT);
+									$sql = "UPDATE `tbl_item_stock` SET `item_code`='$icode',
+																	`item_name`='$iname',
+																	`employee_id`='$eid',
+																	`recorded_quantity`='$rec',
+																	`daily_sell_quantity`='$daily',
+																	`available_quantity`='$avai'
+															WHERE `id`=$editid";
+						
+								$result = $conn->query($sql);
+							
+								header("Location: tables4.php?error=success_edit");
+								
+							
+							}

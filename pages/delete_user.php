@@ -39,5 +39,18 @@ if(isset($_POST['deletebtn'])){
             
         
         }
+
+    if(isset($_POST['deletebtn_stock'])){
+        session_start();
+        
+        $deleteid = $_POST['deleteid'];
+        
+        
+        $sql = "DELETE FROM `tbl_item_stock` WHERE `id`=$deleteid";
+        $result = $conn->query($sql);
+        header("Location: tables4.php?error=success_delete");
+            
+        
+        }
     
     
