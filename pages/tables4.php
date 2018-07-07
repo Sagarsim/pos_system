@@ -67,7 +67,7 @@ include "sidepanel.php";
 
                                         <tr class="odd gradeX">
                                         <td><?php echo $row['item_name'];?></td>
-                                                <td><?php echo $row['item_code'];?></td>
+                                                <td><?php echo $row['item_id'];?></td>
                                                 <td><?php echo $row['employee_id'];?></td>
                                                 <td><?php echo $row['recorded_quantity'];?></td>
                                                 <td><?php echo $row['daily_sell_quantity'];?></td>

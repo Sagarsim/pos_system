@@ -46,12 +46,12 @@ include "sidepanel.php";
 
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <col width="130">
-                                   
+
                                         <thead>
                                             <tr>
                                                   <th>Customer Name</th>
                                                   <th>Customer ID</th>
-                                                  <th>ERP code</th>
+
                                                   <th>Contact Number</th>
                                                   <th>Company Name</th>
                                                   <th>Payment</th>
@@ -70,7 +70,7 @@ include "sidepanel.php";
                                         <tr class="odd gradeX">
                                                 <td><?php echo $row['name'];?></td>
                                                 <td><?php echo $row['customer_id'];?></td>
-                                                <td><?php echo $row['erp_code'];?></td>
+                                                
                                                 <td><?php echo $row['contact_number'];?></td>
                                                 <td><?php echo $row['company_name'];?></td>
                                                 <td><?php
@@ -159,7 +159,7 @@ include "sidepanel.php";
             }
             }
         </script>
-        
+
 
     </body>
 </html>
