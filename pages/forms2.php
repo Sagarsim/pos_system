@@ -34,6 +34,11 @@ include "sidepanel.php";
                                             </div>
                                             <div class="form-group">
 
+                                                <input class="form-control" type="text" name="iid" placeholder="Item ID">
+
+                                            </div>
+                                            <div class="form-group">
+
                                                 <input class="form-control" type="text" name="idesc" placeholder="Description">
 
                                             </div>
@@ -101,6 +106,11 @@ include "sidepanel.php";
                                             </div>
                                             <div class="form-group">
 
+                                                <input class="form-control" type="text" name="iid" placeholder="Item ID" value="<?php echo $row['item_id'];?>">
+
+                                            </div>
+                                            <div class="form-group">
+
                                             <input class="form-control" type="text" name="idesc" placeholder="Description" value="<?php echo $row['description'];?>">
 
                                             </div>
@@ -157,7 +167,8 @@ include "sidepanel.php";
     
             function validate(){
         
-                if(document.myForm.iname.value == "" || 
+                if(document.myForm.iname.value == "" ||
+                document.myForm.iid.value == "" || 
                     document.myForm.idesc.value == "" ||
                     document.myForm.erp.value == "" ||
                     document.myForm.uom.value == "" ||
@@ -172,6 +183,7 @@ $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='
             }
          function validate2(){   
             if(document.myForm2.iname.value == "" || 
+            document.myForm2.iid.value == "" ||
                     document.myForm2.idesc.value == "" ||
                     document.myForm2.erp.value == "" ||
                     document.myForm2.uom.value == "" ||

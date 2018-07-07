@@ -13,26 +13,7 @@ include "sidepanel.php";
                 <div class="row">
                     <div class="col-lg-9" id="message">
 
-                    <?php
-                        $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                if(strpos($url, 'error=userexists') !== false){?>
-                    <div class="alert alert-danger alert-dismissable" style="margin-left:250px;">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                    This username already exists.
-                                                </div>
-                <?php }
-                elseif(strpos($url, 'error=pass') !== false){ ?>
-                    <div class="alert alert-danger alert-dismissable" style="margin-left:250px;">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                    Confirm password incorrect.
-                                                </div>
-                <?php }
-                elseif(strpos($url, 'error=pass_edit') !== false){ ?>
-                    <div class="alert alert-danger alert-dismissable" style="margin-left:250px;">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                    Confirm password incorrect.
-                                                </div>
-                <?php }?>
+                    
                 </div>
                 <div class="col-lg-9">
                 <?php
@@ -48,6 +29,11 @@ include "sidepanel.php";
                                             <div class="form-group">
                                             
                                                 <input class="form-control" type="text" name="name" placeholder="Customer name">
+
+                                            </div>
+                                            <div class="form-group">
+                                            
+                                                <input class="form-control" type="text" name="cid" placeholder="Customer ID">
 
                                             </div>
                                             <div class="form-group">
@@ -132,6 +118,11 @@ include "sidepanel.php";
 
                                           </div>
                                           <div class="form-group">
+                                            
+                                                <input class="form-control" type="text" name="cid" placeholder="Customer ID" value=" <?php echo $row['customer_id'];?>">
+
+                                            </div>
+                                          <div class="form-group">
 
                                               <input class="form-control" type="text" name="erp" placeholder="ERP code" value=" <?php echo $row['erp_code'];?>">
                                           </div>
@@ -211,6 +202,12 @@ include "sidepanel.php";
                                               <input class="form-control" type="text" name="name" placeholder="Customer name" value=" <?php echo $row['name'];?>">
 
                                           </div>
+                                          <label>Customer ID</label>
+                                          <div class="form-group">
+                                            
+                                                <input class="form-control" type="text" name="cid" placeholder="Customer ID" value=" <?php echo $row['customer_id'];?>">
+
+                                            </div>
                                           <div class="form-group">
                                           <label>ERP code</label>
                                               <input class="form-control" type="text" name="erp" placeholder="ERP code" value=" <?php echo $row['erp_code'];?>">

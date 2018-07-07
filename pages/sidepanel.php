@@ -50,7 +50,7 @@ if(!isset($_SESSION["id"])){
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.php"><i class="fa fa-home fa-fw"></i>Shanker Trading</a>
+                    <a class="navbar-brand" href="index.php"><i class="fa fa-home fa-fw"></i>Shankar Trading</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -101,20 +101,27 @@ if(!isset($_SESSION["id"])){
                             <li>
                                 <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
-
                             <li>
-                                <a href="tables.php"><i class="fa fa-users fa-fw"></i> Manage Users</a>
+                                <a href="tables5.php"><i class="fa fa-edit fa-fw"></i> Purchase Order</a>
                             </li>
                             <li>
-                                <a href="tables2.php"><i class="fa fa-clipboard fa-fw"></i> Manage Items</a>
+                            <a href="#"><i class="fa fa-clipboard fa-fw"></i> Manage Area<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                            <li>
+                                <a href="tables.php"><i class="fa fa-user fa-fw"></i> Manage Users</a>
                             </li>
                             <li>
-                                <a href="tables3.php"><i class="fa fa-clipboard fa-fw"></i> Customers</a>
+                                <a href="tables2.php"><i class="fa fa-shopping-cart fa-fw"></i> Manage Items</a>
                             </li>
                             <li>
-                                <a href="tables4.php"><i class="fa fa-clipboard fa-fw"></i>Manage Stock</a>
+                                <a href="tables3.php"><i class="fa fa-users fa-fw"></i> Manage Customers</a>
                             </li>
-                        </ul>
+                            <li>
+                                <a href="tables4.php"><i class="fa fa-cart-plus fa-fw"></i> Manage Stock</a>
+                            </li>
+                                </ul>
+                </li>
+                </ul>
                     </div>
                     <!-- /.sidebar-collapse -->
                 </div>

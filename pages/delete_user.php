@@ -33,7 +33,7 @@ if(isset($_POST['deletebtn'])){
         $deleteid = $_POST['deleteid'];
         
         
-        $sql = "DELETE FROM `tbl_items` WHERE `id`=$deleteid";
+        $sql = "DELETE FROM `customer_table` WHERE `id`=$deleteid";
         $result = $conn->query($sql);
         header("Location: tables3.php?error=success_delete");
             

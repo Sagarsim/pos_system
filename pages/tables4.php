@@ -7,7 +7,7 @@ include "sidepanel.php";
                     <div class="col-lg-12">
                         <form action="forms4.php" method="POST">
                     <button type="submit" class="btn btn-danger btn-circle btn-lg" style="float:right;margin:30px 20px 0px 0px;" name="addbtn">
-                        <i class="fa  fa-users"></i></button></form>
+                        <i class="fa fa-cart-plus"></i></button></form>
                         <a href="export_pdf3.php"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
                             <i class="fa fa-print"></i> Download as PDF</button></a>
                         <a href="export_excel3.php"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
@@ -50,8 +50,8 @@ include "sidepanel.php";
                                         <thead>
                                             <tr>
                                                   <th>Item name</th>
-                                                  <th>Item code</th>
-                                                  <th>Employee id</th>
+                                                  <th>Item ID</th>
+                                                  <th>Employee ID</th>
                                                   <th>Recorded quantity</th>
                                                   <th>Daily sell quantity</th>
                                                   <th>Available quantity</th>
