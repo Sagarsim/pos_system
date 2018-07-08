@@ -26,13 +26,12 @@ foreach($item_ids as $item_id){
     }
 
 }
-$result = $conn->multi_query($queries);
+
 
 $sql = "INSERT INTO `tbl_transation_header`(`customer_name`, `employee_uname`, `total_amt`)
                            VALUES('$cname', '$employee', '$total_amt')";
 $result=$conn->query($sql);
 $last_id = $conn->insert_id;
-$queries = "";
 
 foreach($item_ids as $item_id){
     $qts = $item_qts[$item_id];
