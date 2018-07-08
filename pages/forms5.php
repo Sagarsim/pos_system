@@ -118,11 +118,17 @@ include "sidepanel.php";
                     $('#message').html("");
                     $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='margin-left:250px';><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Please Select an Item</div>");
                     return false;
+                    
            }
-                
+                if(document.myForm.total_amt.value == ""){
+                    $('#message').html("");
+                    $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='margin-left:250px';><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Please enter total amount</div>");
+                    return false;
+
+                }
 
             }
-         
+            
 
 
         </script>
