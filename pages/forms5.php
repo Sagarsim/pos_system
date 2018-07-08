@@ -12,12 +12,20 @@ include "sidepanel.php";
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-9" id="message">
-
+                    <?php
+                        $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                if(strpos($url, 'error=out_of_stock') !== false){?>
+                    <div class="alert alert-danger alert-dismissable" style="margin-left:250px;">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                    Item is out of stock 
+                                                </div>
+                <?php } ?> 
                     
                 </div>
                 <div class="col-lg-9">
                 <?php
-                if(isset($_POST['addbtn'])){?>
+                if(isset($_POST['addbtn']) ||
+                strpos($url, 'error=out_of_stock') !== false){?>
                 <?php
 
                 
