@@ -105,19 +105,20 @@ if(!isset($_SESSION["id"])){
                                 <a href="tables5.php"><i class="fa fa-edit fa-fw"></i> Purchase Order</a>
                             </li>
                             <li>
-                            <a href="#"><i class="fa fa-clipboard fa-fw"></i> Manage Area<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-clipboard fa-fw"></i> Manage<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                             <li>
-                                <a href="tables.php"><i class="fa fa-user fa-fw"></i> Manage Users</a>
+                                <a href="tables.php"><i class="fa fa-user fa-fw"></i> Users</a>
                             </li>
                             <li>
-                                <a href="tables2.php"><i class="fa fa-shopping-cart fa-fw"></i> Manage Items</a>
+                                <a href="tables2.php"><i class="fa fa-shopping-cart fa-fw"></i> Items</a>
+                            </li>
+
+                            <li>
+                                <a href="tables4.php"><i class="fa fa-cart-plus fa-fw"></i> Stock</a>
                             </li>
                             <li>
-                                <a href="tables3.php"><i class="fa fa-users fa-fw"></i> Manage Customers</a>
-                            </li>
-                            <li>
-                                <a href="tables4.php"><i class="fa fa-cart-plus fa-fw"></i> Manage Stock</a>
+                                <a href="tables3.php"><i class="fa fa-users fa-fw"></i> Customers</a>
                             </li>
                                 </ul>
                 </li>

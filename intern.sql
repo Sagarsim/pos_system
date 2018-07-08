@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2018 at 10:36 AM
+-- Generation Time: Jul 08, 2018 at 11:24 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -29,9 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `customer_table` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
   `customer_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `erp_code` varchar(11) NOT NULL,
   `description` varchar(255) NOT NULL,
   `email` varchar(11) NOT NULL,
@@ -46,8 +45,8 @@ CREATE TABLE `customer_table` (
 -- Dumping data for table `customer_table`
 --
 
-INSERT INTO `customer_table` (`id`, `name`, `customer_id`, `erp_code`, `description`, `email`, `address`, `contact_number`, `company_name`, `payment_type`, `status`) VALUES
-(0, 'Sagar', 12, '1212312323', 'asdssasdsdadasdadad', 'sagar199785', 'adasdasdadasdasaadasd', '9000100010', 'a', '0', '1');
+INSERT INTO `customer_table` (`customer_id`, `name`, `erp_code`, `description`, `email`, `address`, `contact_number`, `company_name`, `payment_type`, `status`) VALUES
+(0, '  Sagar', '  121231232', '  asdssasdsdadasdadad', '  sagar1997', '  adasdasdadasdasaadasd', '  900010001', '  a', '0', '1');
 
 -- --------------------------------------------------------
 
@@ -56,9 +55,8 @@ INSERT INTO `customer_table` (`id`, `name`, `customer_id`, `erp_code`, `descript
 --
 
 CREATE TABLE `tbl_items` (
-  `id` int(11) NOT NULL,
-  `item_name` varchar(255) NOT NULL,
   `item_id` int(11) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `erp_code` varchar(11) NOT NULL,
   `uom` varchar(11) NOT NULL,
@@ -70,8 +68,8 @@ CREATE TABLE `tbl_items` (
 -- Dumping data for table `tbl_items`
 --
 
-INSERT INTO `tbl_items` (`id`, `item_name`, `item_id`, `description`, `erp_code`, `uom`, `item_price`, `status`) VALUES
-(1, 'Book', 0, 'Class 12 Physics', '54321', '0987654321', 800, '1');
+INSERT INTO `tbl_items` (`item_id`, `item_name`, `description`, `erp_code`, `uom`, `item_price`, `status`) VALUES
+(3, 'Book', 'asdasdasdsad', '12333', 'pcs', 800, '1');
 
 -- --------------------------------------------------------
 
@@ -81,9 +79,9 @@ INSERT INTO `tbl_items` (`id`, `item_name`, `item_id`, `description`, `erp_code`
 
 CREATE TABLE `tbl_item_stock` (
   `id` int(11) NOT NULL,
-  `item_id` varchar(50) NOT NULL,
+  `item_id` int(11) NOT NULL,
   `item_name` varchar(50) NOT NULL,
-  `employee_id` varchar(50) NOT NULL,
+  `employee_uname` varchar(50) NOT NULL,
   `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `recorded_quantity` int(11) NOT NULL,
   `daily_sell_quantity` int(11) NOT NULL,
@@ -94,8 +92,8 @@ CREATE TABLE `tbl_item_stock` (
 -- Dumping data for table `tbl_item_stock`
 --
 
-INSERT INTO `tbl_item_stock` (`id`, `item_id`, `item_name`, `employee_id`, `date_time`, `recorded_quantity`, `daily_sell_quantity`, `available_quantity`) VALUES
-(1, '  1212121212', '  Book', '  10', '2018-07-07 04:33:38', 12, 1, 12);
+INSERT INTO `tbl_item_stock` (`id`, `item_id`, `item_name`, `employee_uname`, `date_time`, `recorded_quantity`, `daily_sell_quantity`, `available_quantity`) VALUES
+(2, 3, 'Book', 'sagar1234', '2018-07-08 06:23:56', 12, 0, 12);
 
 -- --------------------------------------------------------
 
@@ -105,6 +103,7 @@ INSERT INTO `tbl_item_stock` (`id`, `item_id`, `item_name`, `employee_id`, `date
 
 CREATE TABLE `tbl_transation_detail` (
   `id` int(11) NOT NULL,
+  `invoice` int(11) NOT NULL,
   `item_id` varchar(50) NOT NULL,
   `price` int(11) NOT NULL,
   `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -119,7 +118,7 @@ CREATE TABLE `tbl_transation_detail` (
 --
 
 CREATE TABLE `tbl_transation_header` (
-  `id` int(11) NOT NULL,
+  `invoice` int(11) NOT NULL,
   `customer_id` int(50) NOT NULL,
   `employee_id` int(50) NOT NULL,
   `total_amt` float NOT NULL,
@@ -161,25 +160,27 @@ INSERT INTO `tbl_user` (`id`, `fname`, `lname`, `uname`, `upass`, `status`, `dat
 -- Indexes for table `tbl_items`
 --
 ALTER TABLE `tbl_items`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`item_id`);
 
 --
 -- Indexes for table `tbl_item_stock`
 --
 ALTER TABLE `tbl_item_stock`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tbl_item_stock_ibfk_1` (`item_id`);
 
 --
 -- Indexes for table `tbl_transation_detail`
 --
 ALTER TABLE `tbl_transation_detail`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tbl_transation_detail_ibfk_1` (`invoice`);
 
 --
 -- Indexes for table `tbl_transation_header`
 --
 ALTER TABLE `tbl_transation_header`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`invoice`);
 
 --
 -- Indexes for table `tbl_user`
@@ -195,13 +196,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_items`
 --
 ALTER TABLE `tbl_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_item_stock`
 --
 ALTER TABLE `tbl_item_stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_transation_detail`
@@ -213,13 +214,29 @@ ALTER TABLE `tbl_transation_detail`
 -- AUTO_INCREMENT for table `tbl_transation_header`
 --
 ALTER TABLE `tbl_transation_header`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `invoice` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_item_stock`
+--
+ALTER TABLE `tbl_item_stock`
+  ADD CONSTRAINT `tbl_item_stock_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `tbl_items` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_transation_detail`
+--
+ALTER TABLE `tbl_transation_detail`
+  ADD CONSTRAINT `tbl_transation_detail_ibfk_1` FOREIGN KEY (`invoice`) REFERENCES `tbl_transation_header` (`invoice`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

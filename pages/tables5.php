@@ -45,7 +45,8 @@ include "sidepanel.php";
                                     <col width="130">
 
                                         <thead>
-                                            <tr>
+                                            <tr>    <th>Date</th>
+                                            <th>Customer Name</th>
                                                   <th>Customer Name</th>
                                                   <th>Employee Name</th>
                                                   <th>Total Amount</th>
@@ -63,6 +64,7 @@ include "sidepanel.php";
                                             while($row=$result->fetch_assoc()){?>
 
                                         <tr class="odd gradeX">
+                                        <td><?php echo $row['date_time'];?></td>
                                         <td><?php echo $row['customer_id'];?></td>
                                                 <td><?php echo $row['user_id'];?></td>
                                                 <td><?php echo $row['total_amt'];?></td>

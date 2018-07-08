@@ -20,7 +20,7 @@ if(isset($_POST['deletebtn'])){
     $deleteid = $_POST['deleteid'];
     
     
-    $sql = "DELETE FROM `tbl_items` WHERE `id`=$deleteid";
+    $sql = "DELETE FROM `tbl_items` WHERE `item_id`=$deleteid";
     $result = $conn->query($sql);
     header("Location: tables2.php?error=success_delete");
         
@@ -33,7 +33,7 @@ if(isset($_POST['deletebtn'])){
         $deleteid = $_POST['deleteid'];
         
         
-        $sql = "DELETE FROM `customer_table` WHERE `id`=$deleteid";
+        $sql = "DELETE FROM `customer_table` WHERE `customer_id`=$deleteid";
         $result = $conn->query($sql);
         header("Location: tables3.php?error=success_delete");
             
@@ -46,7 +46,7 @@ if(isset($_POST['deletebtn'])){
         $deleteid = $_POST['deleteid'];
         
         
-        $sql = "DELETE FROM `tbl_item_stock` WHERE `id`=$deleteid";
+        $sql = "DELETE FROM `tbl_item_stock` WHERE `item_id`=$deleteid";
         $result = $conn->query($sql);
         header("Location: tables4.php?error=success_delete");
             

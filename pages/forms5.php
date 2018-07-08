@@ -50,34 +50,25 @@ include "sidepanel.php";
                                             <div class="form-group">
                                            
                                             <label>Select Item</label>
-                                                <select class="form-control" type="text" name="status">
-                                                <?php
+                                            <label class="inline col-md-offset-3">Quantity</label>
+                                            <?php
                                                     while($row=$result->fetch_assoc()){?>
-                                                        <option value="<?php echo $row['item_id'];?>"><?php echo $row['item_name'];?></option>
-                                                   <?php }?>
-                                                  
-                                                </select>
-
-                                            </div>
-                                            <div class="form-group">
-                                            <label>Purchase Quantity</label>
-                                                <input class="form-control" type="text" name="email" placeholder="Purchase Quantity">
-                                            </div>
-                                            <div class="form-group">
-                                            
-                                            <label>Salesman ID</label>
-                                                <select class="form-control" type="text" name="status">
-                                                   
+                                                        
+                                                    <div class="checkbox">
+                                                        <label>
+                                                        <input type="checkbox" value="<?php echo $row['item_id'];?>"><?php echo $row['item_name']." in ".$row['uom'];?>
+                                                        </label>
+                                                        
+                                                        <label class="col-md-offset-2"><input class="inline" type="text" name="qt"></label>
+                                                    </div>
                                                 
-                                                  <option value="1">1221</option>
-                                                  <option value="0">2342</option>
-                                                </select>
+                                                   <?php }?>
+
+                                            
                                             </div>
+                                            
                                             <label>Total Amount</label>
                                             <div class="form-group input-group">
-                                            
-                                                <span class="input-group-addon"><i class="fa fa-inr"></i>
-                                                </span>
                                                 <input type="text" class="form-control">
                                                 <span class="input-group-addon">.00</span>
                                             </div>

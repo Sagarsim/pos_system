@@ -22,6 +22,7 @@ $hash = password_verify($pwd, $hash_pwd);
 						$_SESSION['id']=$row['id'];
 						$_SESSION['fname']=$row['fname'];
 						$_SESSION['lname']=$row['lname'];
+						$_SESSION['uname']=$row['uname'];
 						$_SESSION['type']=$row['type'];
 						header("Location: index.php");
 					exit();

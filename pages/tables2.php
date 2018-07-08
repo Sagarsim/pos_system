@@ -78,13 +78,13 @@ include "sidepanel.php";
                                                 }?></td>
                                                 <td class="center">
                                                     <form action="forms2.php" method="POST">
-                                                    <input type="hidden" value="<?php echo $row['id']?>" name="editid">
+                                                    <input type="hidden" value="<?php echo $row['item_id']?>" name="editid">
                                                     <button type="submit" class="btn btn-outline btn-success" name="editbtn">Edit</button>
                                                     </form>
                                                 </td>
                                                 <td class="center">
                                                     <form action="delete_user.php" method="POST">
-                                                    <input type="hidden" value="<?php echo $row['id']?>" name="deleteid">
+                                                    <input type="hidden" value="<?php echo $row['item_id']?>" name="deleteid">
                                                     <button type="submit" onclick="return confirm_delete()" class="btn btn-outline btn-danger" name="deletebtn">Delete</button>
                                                     </form>
                                                 </td>

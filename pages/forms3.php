@@ -31,11 +31,7 @@ include "sidepanel.php";
                                                 <input class="form-control" type="text" name="name" placeholder="Customer name">
 
                                             </div>
-                                            <div class="form-group">
                                             
-                                                <input class="form-control" type="text" name="cid" placeholder="Customer ID">
-
-                                            </div>
                                             <div class="form-group">
                                             
                                                 <input class="form-control" type="text" name="erp_code" placeholder="ERP code">
@@ -100,7 +96,7 @@ include "sidepanel.php";
                                         <?php
 
                                 $editid = $_POST['editid'];
-                                $sql = "SELECT * FROM `customer_table` WHERE `id`=$editid";
+                                $sql = "SELECT * FROM `customer_table` WHERE `customer_id`=$editid";
                                 $result=$conn->query($sql);
                                 $row=$result->fetch_assoc();
                                 ?>
@@ -117,11 +113,7 @@ include "sidepanel.php";
                                               <input class="form-control" type="text" name="name" placeholder="Customer name" value=" <?php echo $row['name'];?>">
 
                                           </div>
-                                          <div class="form-group">
-                                            
-                                                <input class="form-control" type="text" name="cid" placeholder="Customer ID" value=" <?php echo $row['customer_id'];?>">
-
-                                            </div>
+                                          
                                           <div class="form-group">
 
                                               <input class="form-control" type="text" name="erp" placeholder="ERP code" value=" <?php echo $row['erp_code'];?>">
@@ -165,7 +157,7 @@ include "sidepanel.php";
                                           </div>
 
 
-                                            <input type="hidden" value="<?php echo $row['id'];?>" name="editid">
+                                            <input type="hidden" value="<?php echo $row['customer_id'];?>" name="editid">
                                             <button type="submit" class="btn btn-default"  name="edit_customer">Edit Customer</button>
 
                                         </form>
@@ -185,7 +177,7 @@ include "sidepanel.php";
                                          <?php
 
                                         $editid = $_POST['detailid'];
-                                        $sql = "SELECT * FROM `customer_table` WHERE `id`=$editid";
+                                        $sql = "SELECT * FROM `customer_table` WHERE `customer_id`=$editid";
                                         $result=$conn->query($sql);
                                         $row=$result->fetch_assoc();
                                         ?>
@@ -202,12 +194,7 @@ include "sidepanel.php";
                                               <input class="form-control" type="text" name="name" placeholder="Customer name" value=" <?php echo $row['name'];?>">
 
                                           </div>
-                                          <label>Customer ID</label>
-                                          <div class="form-group">
-                                            
-                                                <input class="form-control" type="text" name="cid" placeholder="Customer ID" value=" <?php echo $row['customer_id'];?>">
-
-                                            </div>
+                                          
                                           <div class="form-group">
                                           <label>ERP code</label>
                                               <input class="form-control" type="text" name="erp" placeholder="ERP code" value=" <?php echo $row['erp_code'];?>">
@@ -238,7 +225,7 @@ include "sidepanel.php";
                                           <label>Payment</label>
                                           <input class="form-control" type="text" name="payment_type" value=" <?php
                                                 if($row['payment_type'] == 0){
-                                                    echo 'Case';
+                                                    echo 'Cash';
                                                 } else {
                                                     echo 'Credit';
                                                 }?>">

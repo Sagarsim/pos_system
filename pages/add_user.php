@@ -73,15 +73,15 @@ if(isset($_POST['edit_user'])){
 		session_start();
 		
 		$iname =mysqli_real_escape_string($conn, $_POST['iname']);
-		$iid =mysqli_real_escape_string($conn, $_POST['iid']);
+		
 		$desc =mysqli_real_escape_string($conn, $_POST['idesc']);
 		$erp =mysqli_real_escape_string($conn, $_POST['erp']);
 		$uom =mysqli_real_escape_string($conn, $_POST['uom']);
 		$price = mysqli_real_escape_string($conn, $_POST['iprice']);
 		$status = mysqli_real_escape_string($conn, $_POST['status']);
 	
-		$sql = "INSERT INTO `tbl_items` (`item_name`,`item_id`,`description`, `erp_code`, `uom`, `item_price`, `status`) 
-			VALUES ('$iname','$iid','$desc', '$erp', '$uom', '$price', '$status')";
+		$sql = "INSERT INTO `tbl_items` (`item_name`,`description`, `erp_code`, `uom`, `item_price`, `status`) 
+			VALUES ('$iname','$desc', '$erp', '$uom', '$price', '$status')";
 		
 			$result = $conn->query($sql);
 		
@@ -94,7 +94,7 @@ if(isset($_POST['edit_user'])){
 			session_start();
 			
 			$iname =mysqli_real_escape_string($conn, $_POST['iname']);
-			$iid =mysqli_real_escape_string($conn, $_POST['iid']);
+			
 			$desc =mysqli_real_escape_string($conn, $_POST['idesc']);
 		$erp =mysqli_real_escape_string($conn, $_POST['erp']);
 		$uom =mysqli_real_escape_string($conn, $_POST['uom']);
@@ -105,13 +105,12 @@ if(isset($_POST['edit_user'])){
 				
 					$encrypted_password=password_hash($passwordcon, PASSWORD_DEFAULT);
 					$sql = "UPDATE `tbl_items` SET `item_name`='$iname',
-													`item_id`='$iid'
 													`description`='$desc',
 													`erp_code`='$erp',
 													`uom`='$uom',
 													`item_price`='$price',
 													`status`='$status'
-											WHERE `id`=$editid";
+											WHERE `item_id`=$editid";
 		
 				$result = $conn->query($sql);
 			
@@ -125,7 +124,6 @@ if(isset($_POST['edit_user'])){
 				
 				$name =mysqli_real_escape_string($conn, $_POST['name']);
 				$desc =mysqli_real_escape_string($conn, $_POST['idesc']);
-				$cid = mysqli_real_escape_string($conn, $_POST['cid']);
 				$erp =mysqli_real_escape_string($conn, $_POST['erp_code']);
 				$email =mysqli_real_escape_string($conn, $_POST['email']);
 				$address = mysqli_real_escape_string($conn, $_POST['address']);
@@ -133,8 +131,8 @@ if(isset($_POST['edit_user'])){
 				$company = mysqli_real_escape_string($conn, $_POST['company_name']);
 				$payment = mysqli_real_escape_string($conn, $_POST['payment_type']);
 				$status = mysqli_real_escape_string($conn, $_POST['status']);
-				$sql = "INSERT INTO `customer_table` (`name`,`customer_id`,`erp_code`, `description`, `email`, `address`, `contact_number`, `company_name`, `payment_type`, `status`) 
-					VALUES ('$name','$cid','$erp', '$desc', '$email', '$address', '$contact', '$company', '$payment', '$status')";
+				$sql = "INSERT INTO `customer_table` (`name`,`erp_code`, `description`, `email`, `address`, `contact_number`, `company_name`, `payment_type`, `status`) 
+					VALUES ('$name','$erp', '$desc', '$email', '$address', '$contact', '$company', '$payment', '$status')";
 				
 					$result = $conn->query($sql);
 				
@@ -147,7 +145,6 @@ if(isset($_POST['edit_user'])){
 					
 					$name =mysqli_real_escape_string($conn, $_POST['name']);
 					$desc =mysqli_real_escape_string($conn, $_POST['idesc']);
-					$cid = mysqli_real_escape_string($conn, $_POST['cid']);
 					$erp =mysqli_real_escape_string($conn, $_POST['erp']);
 					$email =mysqli_real_escape_string($conn, $_POST['email']);
 					$address = mysqli_real_escape_string($conn, $_POST['address']);
@@ -157,7 +154,6 @@ if(isset($_POST['edit_user'])){
 					$status = mysqli_real_escape_string($conn, $_POST['status']);
 					$editid=mysqli_real_escape_string($conn, $_POST['editid']);
 					$sql = "UPDATE `customer_table` SET `name`='$name',
-													`customer_id` = '$cid',
 													`erp_code`='$erp',
 													`description`='$desc',
 													`email`='$email',
@@ -166,10 +162,10 @@ if(isset($_POST['edit_user'])){
 													`company_name`='$company',
 													`payment_type`='$payment',
 													`status`='$status'
-											WHERE `id`=$editid";
+											WHERE `customer_id`=$editid";
 		
 				$result = $conn->query($sql);
-						header("Location: tables3.php?error=success_add");
+						header("Location: tables3.php?error=success_edit");
 						
 					
 					}
@@ -177,16 +173,22 @@ if(isset($_POST['edit_user'])){
 						session_start();
 						
 						$iname =mysqli_real_escape_string($conn, $_POST['iname']);
-						$icode =mysqli_real_escape_string($conn, $_POST['icode']);
-						$eid =mysqli_real_escape_string($conn, $_POST['eid']);
+						echo $iname;
+						$eid =$_SESSION['uname'];
 						$rec =mysqli_real_escape_string($conn, $_POST['rec_quantity']);
 						$daily = mysqli_real_escape_string($conn, $_POST['daily_quantity']);
 						$avai = mysqli_real_escape_string($conn, $_POST['avai_quantity']);
-					
-						$sql = "INSERT INTO `tbl_item_stock` (`item_id`,`item_name`, `employee_id`, `recorded_quantity`, `daily_sell_quantity`, `available_quantity`) 
+						$sql = "SELECT `item_id` FROM `tbl_items` WHERE `item_name`='$iname'";
+						$result = $conn->query($sql);
+						
+						if($row = $result->fetch_assoc()){
+							echo $row;
+						}
+						$icode = $row['item_id'];
+						$sql2 = "INSERT INTO `tbl_item_stock` (`item_id`,`item_name`, `employee_uname`, `recorded_quantity`, `daily_sell_quantity`, `available_quantity`) 
 							VALUES ('$icode','$iname', '$eid', '$rec', '$daily', '$avai')";
 						
-							$result = $conn->query($sql);
+							$result2 = $conn->query($sql2);
 						
 							header("Location: tables4.php?error=success_add");
 							
@@ -197,21 +199,20 @@ if(isset($_POST['edit_user'])){
 							session_start();
 							
 							$iname =mysqli_real_escape_string($conn, $_POST['iname']);
-						$icode =mysqli_real_escape_string($conn, $_POST['icode']);
-						$eid =mysqli_real_escape_string($conn, $_POST['eid']);
+						
+						$eid =$_SESSION['uname'];
 						$rec =mysqli_real_escape_string($conn, $_POST['rec_quantity']);
 						$daily = mysqli_real_escape_string($conn, $_POST['daily_quantity']);
 						$avai = mysqli_real_escape_string($conn, $_POST['avai_quantity']);
 						$editid=mysqli_real_escape_string($conn, $_POST['editid']);		
 								
 									$encrypted_password=password_hash($passwordcon, PASSWORD_DEFAULT);
-									$sql = "UPDATE `tbl_item_stock` SET `item_id`='$icode',
-																	`item_name`='$iname',
-																	`employee_id`='$eid',
+									$sql = "UPDATE `tbl_item_stock` SET `item_name`='$iname',
+																	`employee_uname`='$eid',
 																	`recorded_quantity`='$rec',
 																	`daily_sell_quantity`='$daily',
 																	`available_quantity`='$avai'
-															WHERE `id`=$editid";
+															WHERE `item_id`=$editid";
 						
 								$result = $conn->query($sql);
 							

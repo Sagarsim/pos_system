@@ -46,13 +46,11 @@ include "sidepanel.php";
 
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <col width="130">
-                                   
+
                                         <thead>
                                             <tr>
                                                   <th>Customer Name</th>
-                                                  <th>Customer ID</th>
-                                                  <th>ERP code</th>
-                                                  <th>Contact Number</th>
+                                                <th>Contact Number</th>
                                                   <th>Company Name</th>
                                                   <th>Payment</th>
                                                   <th>Status</th>
@@ -69,9 +67,7 @@ include "sidepanel.php";
 
                                         <tr class="odd gradeX">
                                                 <td><?php echo $row['name'];?></td>
-                                                <td><?php echo $row['customer_id'];?></td>
-                                                <td><?php echo $row['erp_code'];?></td>
-                                                <td><?php echo $row['contact_number'];?></td>
+                                               <td><?php echo $row['contact_number'];?></td>
                                                 <td><?php echo $row['company_name'];?></td>
                                                 <td><?php
                                                 if($row['payment_type'] == 0){
@@ -86,19 +82,19 @@ include "sidepanel.php";
                                                 }?></td>
                                                 <td class="center">
                                                       <form action="forms3.php" method="POST">
-                                                      <input type="hidden" value="<?php echo $row['id']?>" name="detailid">
+                                                      <input type="hidden" value="<?php echo $row['customer_id']?>" name="detailid">
                                                       <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Details</button>
                                                       </form>
                                                   </td>
                                                   <td class="center">
                                                       <form action="forms3.php" method="POST">
-                                                      <input type="hidden" value="<?php echo $row['id']?>" name="editid">
+                                                      <input type="hidden" value="<?php echo $row['customer_id']?>" name="editid">
                                                       <button type="submit" class="btn btn-outline btn-success" name="editbtn">Edit</button>
                                                       </form>
                                                   </td>
                                                   <td class="center">
                                                       <form action="delete_user.php" method="POST">
-                                                      <input type="hidden" value="<?php echo $row['id']?>" name="deleteid">
+                                                      <input type="hidden" value="<?php echo $row['customer_id']?>" name="deleteid">
                                                       <button type="submit" onclick="return confirm_delete()" class="btn btn-outline btn-danger" name="deletebtn_customer">Delete</button>
                                                     </form>
                                                 </td>
@@ -159,7 +155,7 @@ include "sidepanel.php";
             }
             }
         </script>
-        
+
 
     </body>
 </html>

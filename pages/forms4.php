@@ -18,6 +18,10 @@ include "sidepanel.php";
                 <div class="col-lg-9">
                 <?php
                 if(isset($_POST['addbtn'])){?>
+                    <?php
+                    $sql = "SELECT * FROM `tbl_items`";
+                    $result = $conn->query($sql);
+                    ?>
                                      <div class="panel panel-default" style="margin-left:250px;">
                             <div class="panel-heading">
                                 Add Stock
@@ -29,19 +33,18 @@ include "sidepanel.php";
                                             <div class="form-group">
 
 
-                                                <input class="form-control" type="text" name="iname" placeholder="Item name">
+                                                <label>Select Item</label>
+                                                <select class="form-control" type="text" name="iname">
+                                                <?php
+                                                    while($row=$result->fetch_assoc()){?>
+                                                        <option value="<?php echo $row['item_name'];?>"><?php echo $row['item_name']." in ".$row['uom'];?></option>
+                                                   <?php }?>
+                                                </select>
 
 
                                             </div>
+                                            
                                             <div class="form-group">
-
-                                              <input class="form-control" type="text" name="icode" placeholder="Item code">
-                                            </div>
-                                            <div class="form-group">
-
-                                              <input class="form-control" type="text" name="eid" placeholder="Employee id">
-
-                                            </div><div class="form-group">
 
                                               <input class="form-control" type="text" name="rec_quantity" placeholder="Recorded quantity">
                                             </div>
@@ -77,9 +80,11 @@ include "sidepanel.php";
                                         <?php
 
                                 $editid = $_POST['editid'];
-                                $sql = "SELECT * FROM `tbl_item_stock` WHERE `id`=$editid";
+                                $sql = "SELECT * FROM `tbl_item_stock` WHERE `item_id`=$editid";
                                 $result=$conn->query($sql);
                                 $row=$result->fetch_assoc();
+                                $sql2 = "SELECT `item_name`,`uom` FROM `tbl_items`";
+                                $result2 = $conn->query($sql2);
                                 ?>
                         <div class="panel panel-default" style="margin-left:250px;">
                             <div class="panel-heading">
@@ -91,18 +96,17 @@ include "sidepanel.php";
                                         <form role="form" name="myForm2" onsubmit="return validate2()" action="add_user.php" method="POST">
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="iname" placeholder="Item name" value=" <?php echo $row['item_code'];?>">
+                                              <label>Select Item</label>
+                                                <select class="form-control" type="text" name="iname">
+                                                <?php
+                                                    while($row2=$result2->fetch_assoc()){?>
+                                                        <option value="<?php echo $row2['item_name'];?>"><?php echo $row2['item_name']." in ".$row2['uom'];?></option>
+                                                   <?php }?>
+                                                </select>
 
                                           </div>
-                                          <div class="form-group">
-
-                                              <input class="form-control" type="text" name="icode" placeholder="Item code" value=" <?php echo $row['item_name'];?>">
-                                          </div>
-                                          <div class="form-group">
-
-                                              <input class="form-control" type="text" name="eid" placeholder="Employee id"  value=" <?php echo $row['employee_id'];?>">
-
-                                          </div>
+                                          
+                                        
                                           <div class="form-group">
 
                                               <input class="form-control" type="text" name="rec_quantity" placeholder="Recorded quantity" value=" <?php echo $row['recorded_quantity'];?>">
@@ -117,7 +121,7 @@ include "sidepanel.php";
                                           </div>
 
 
-                                            <input type="hidden" value="<?php echo $row['id'];?>" name="editid">
+                                            <input type="hidden" value="<?php echo $row['item_id'];?>" name="editid">
                                             <button type="submit" class="btn btn-default"  name="edit_stock">Edit Stock</button>
 
                                         </form>
@@ -148,8 +152,6 @@ include "sidepanel.php";
             function validate(){
 
                 if(document.myForm.iname.value == "" ||
-                    document.myForm.icode.value == "" ||
-                    document.myForm.eid.value == "" ||
                     document.myForm.rec_quantity.value == "" ||
                     document.myForm.daily_quantity.value == "" ||
                     document.myForm.avai_quantity.value == ""){
@@ -162,8 +164,6 @@ $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='
             }
          function validate2(){
             if(document.myForm2.iname.value == "" ||
-                    document.myForm2.icode.value == "" ||
-                    document.myForm2.eid.value == "" ||
                     document.myForm2.rec_quantity.value == "" ||
                     document.myForm2.daily_quantity.value == "" ||
                     document.myForm2.avai_quantity.value == ""){

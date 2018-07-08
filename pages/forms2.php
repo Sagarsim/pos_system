@@ -32,11 +32,7 @@ include "sidepanel.php";
                                                 <input class="form-control" type="text" name="iname" placeholder="Item Name">
 
                                             </div>
-                                            <div class="form-group">
-
-                                                <input class="form-control" type="text" name="iid" placeholder="Item ID">
-
-                                            </div>
+                                        
                                             <div class="form-group">
 
                                                 <input class="form-control" type="text" name="idesc" placeholder="Description">
@@ -47,7 +43,15 @@ include "sidepanel.php";
                                                 <input class="form-control" type="text" name="erp" placeholder="ERP code">
                                             </div>
                                             <div class="form-group">
-                                            <input class="form-control" type="text" name="uom" placeholder="UOM">
+                                            
+                                            <select class="form-control" type="text" name="uom">
+                                            <option value="ctn">ctn</option>
+                                            <option value="pcs">pcs</option>
+                                            <option value="out">out</option>
+                                            <option value="pkg">pkg</option>
+                                            <option value="ltr">ltr</option>
+                                            <option value="kg">kg</option>
+                                            </select>
                                             </div>
                                             <div class="form-group">
                                             <input class="form-control" type="text" name="iprice" placeholder="Item Price">
@@ -85,7 +89,7 @@ include "sidepanel.php";
                                         <?php
 
                                 $editid = $_POST['editid'];
-                                $sql = "SELECT * FROM `tbl_items` WHERE `id`=$editid";
+                                $sql = "SELECT * FROM `tbl_items` WHERE `item_id`=$editid";
                                 $result=$conn->query($sql);
                                 $row=$result->fetch_assoc();
                                 ?>
@@ -104,11 +108,7 @@ include "sidepanel.php";
                                             <input class="form-control" type="text" name="iname" placeholder="Item Name" value="<?php echo $row['item_name'];?>">
 
                                             </div>
-                                            <div class="form-group">
-
-                                                <input class="form-control" type="text" name="iid" placeholder="Item ID" value="<?php echo $row['item_id'];?>">
-
-                                            </div>
+                                        
                                             <div class="form-group">
 
                                             <input class="form-control" type="text" name="idesc" placeholder="Description" value="<?php echo $row['description'];?>">
@@ -119,7 +119,15 @@ include "sidepanel.php";
                                             <input class="form-control" type="text" name="erp" placeholder="ERP code" value="<?php echo $row['erp_code'];?>">
                                             </div>
                                             <div class="form-group">
-                                            <input class="form-control" type="text" name="uom" placeholder="UOM" value="<?php echo $row['uom'];?>">
+                                            
+                                            <select class="form-control" type="text" name="uom">
+                                            <option value="ctn">ctn</option>
+                                            <option value="pcs">pcs</option>
+                                            <option value="out">out</option>
+                                            <option value="pkg">pkg</option>
+                                            <option value="ltr">ltr</option>
+                                            <option value="kg">kg</option>
+                                            </select>
                                             </div>
                                             <div class="form-group">
                                             <input class="form-control" type="text" name="iprice" placeholder="Item Price" value="<?php echo $row['item_price'];?>">
@@ -133,7 +141,7 @@ include "sidepanel.php";
                                             <option value="0">Inactive</option>
                                             </select>
                                             </div>
-                                            <input type="hidden" value="<?php echo $row['id'];?>" name="editid">
+                                            <input type="hidden" value="<?php echo $row['item_id'];?>" name="editid">
                                             <button type="submit" class="btn btn-default"  name="edit_item">Submit</button>
 
                                         </form>
@@ -168,7 +176,6 @@ include "sidepanel.php";
             function validate(){
         
                 if(document.myForm.iname.value == "" ||
-                document.myForm.iid.value == "" || 
                     document.myForm.idesc.value == "" ||
                     document.myForm.erp.value == "" ||
                     document.myForm.uom.value == "" ||
@@ -183,7 +190,6 @@ $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='
             }
          function validate2(){   
             if(document.myForm2.iname.value == "" || 
-            document.myForm2.iid.value == "" ||
                     document.myForm2.idesc.value == "" ||
                     document.myForm2.erp.value == "" ||
                     document.myForm2.uom.value == "" ||
