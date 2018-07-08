@@ -109,15 +109,15 @@ include "sidepanel.php";
                                         
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="rec_quantity" placeholder="Recorded quantity" value=" <?php echo $row['recorded_quantity'];?>">
+                                              <input class="form-control" type="text" name="rec_quantity" placeholder="Recorded quantity" value="<?php echo $row['recorded_quantity'];?>">
                                           </div>
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="daily_quantity" placeholder="Daily sell quantity" value=" <?php echo $row['daily_sell_quantity'];?>">
+                                              <input class="form-control" type="text" name="daily_quantity" placeholder="Daily sell quantity" value="<?php echo $row['daily_sell_quantity'];?>">
                                           </div>
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="avai_quantity" placeholder="Available quantity" value=" <?php echo $row['available_quantity'];?>">
+                                              <input class="form-control" type="text" name="avai_quantity" placeholder="Available quantity" value="<?php echo $row['available_quantity'];?>">
                                           </div>
 
 

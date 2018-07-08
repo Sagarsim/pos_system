@@ -110,34 +110,34 @@ include "sidepanel.php";
                                         <form role="form" name="myForm2" onsubmit="return validate2()" action="add_user.php" method="POST">
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="name" placeholder="Customer name" value=" <?php echo $row['name'];?>">
+                                              <input class="form-control" type="text" name="name" placeholder="Customer name" value="<?php echo $row['name'];?>">
 
                                           </div>
                                           
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="erp" placeholder="ERP code" value=" <?php echo $row['erp_code'];?>">
+                                              <input class="form-control" type="text" name="erp" placeholder="ERP code" value="<?php echo $row['erp_code'];?>">
                                           </div>
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="idesc" placeholder="Description"  value=" <?php echo $row['description'];?>">
+                                              <input class="form-control" type="text" name="idesc" placeholder="Description"  value="<?php echo $row['description'];?>">
 
                                           </div>
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="email" placeholder="Email Id" value=" <?php echo $row['email'];?>">
+                                              <input class="form-control" type="text" name="email" placeholder="Email Id" value="<?php echo $row['email'];?>">
                                           </div>
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="address" placeholder="Address" value=" <?php echo $row['address'];?>">
+                                              <input class="form-control" type="text" name="address" placeholder="Address" value="<?php echo $row['address'];?>">
                                           </div>
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="contact_number" placeholder="Contact Number" value=" <?php echo $row['contact_number'];?>">
+                                              <input class="form-control" type="text" name="contact_number" placeholder="Contact Number" value="<?php echo $row['contact_number'];?>">
                                           </div>
                                           <div class="form-group">
 
-                                              <input class="form-control" type="text" name="company_name" placeholder="Company Name" value=" <?php echo $row['company_name'];?>">
+                                              <input class="form-control" type="text" name="company_name" placeholder="Company Name" value="<?php echo $row['company_name'];?>">
                                           </div>
 
                                           <div class="form-group">

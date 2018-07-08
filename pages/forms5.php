@@ -34,14 +34,14 @@ include "sidepanel.php";
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form role="form" name="myForm" onsubmit="return validate()" action="add_user.php" method="POST">
+                                        <form role="form" name="myForm" onsubmit="return validate()" action="add_order.php" method="POST" id="checkcnt">
                                             <div class="form-group">
                                             
                                             <label>Select Customer</label>
-                                                <select class="form-control" type="text" name="status">
+                                                <select class="form-control" type="text" name="cname">
                                                 <?php
                                                     while($row2=$result2->fetch_assoc()){?>
-                                                        <option value="<?php echo $row2['customer_id'];?>"><?php echo $row2['name'];?></option>
+                                                        <option value="<?php echo $row2['name'];?>"><?php echo $row2['name'];?></option>
                                                    <?php }?>
                                                 </select>
 
@@ -56,10 +56,12 @@ include "sidepanel.php";
                                                         
                                                     <div class="checkbox">
                                                         <label>
-                                                        <input type="checkbox" value="<?php echo $row['item_id'];?>"><?php echo $row['item_name']." in ".$row['uom'];?>
+                                                        <input type="checkbox" value="<?php echo $row['item_id'];?>" name="item_id[]"><?php echo $row['item_name'];?>
                                                         </label>
                                                         
-                                                        <label class="col-md-offset-2"><input class="inline" type="text" name="qt"></label>
+                                                        <label class="col-md-offset-3">
+                                                        <input class="inline" type="text" name="item_qt[<?php echo $row['item_id'];?>]"> <?php echo " ".$row['uom'];?>
+                                                        </label>
                                                     </div>
                                                 
                                                    <?php }?>
@@ -69,12 +71,12 @@ include "sidepanel.php";
                                             
                                             <label>Total Amount</label>
                                             <div class="form-group input-group">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="total_amt">
                                                 <span class="input-group-addon">.00</span>
                                             </div>
                                                
 
-
+                                            
                                             <button type="submit" class="btn btn-default"  name="add_order">Submit</button>
 
                                         </form>
@@ -105,49 +107,29 @@ include "sidepanel.php";
 
         </div>
         <!-- /#wrapper -->
+        <script src="../js/jquery.min.js"></script>
         <script type="text/javascript">
-
+       
             function validate(){
 
-                if(document.myForm.name.value == "" ||
-                    document.myForm.erp.value == "" ||
-                    document.myForm.idesc.value == "" ||
-                    document.myForm.email.value == "" ||
-                    document.myForm.address.value == "" ||
-                    document.myForm.contact_number.value == "" ||
-                    document.myForm.company_name.value == "" ||
-                   document.myForm.payment_type.value == ""||
-                   document.myForm.status.value == ""){
+               var checkboxes = $('#checkcnt input[type="checkbox"]');
+               var count = checkboxes.filter(':checked').length;
+                if(count == 0){
                     $('#message').html("");
-$('#message').prepend("<div class='alert alert-danger alert-dismissable' style='margin-left:250px';><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Please fill all the fields.</div>");
+                    $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='margin-left:250px';><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Please Select an Item</div>");
                     return false;
-
-                }
+           }
+                
 
             }
-         function validate2(){
-            if(document.myForm2.name.value == "" ||
-                document.myForm2.erp.value == "" ||
-                document.myForm2.idesc.value == "" ||
-                document.myForm2.email.value == "" ||
-                document.myForm2.address.value == "" ||
-                document.myForm2.contact_number.value == "" ||
-                document.myForm2.company_name.value == "" ||
-               document.myForm2.payment_type.value == ""||
-               document.myForm2.status.value == ""){
-                       $('#message').html("");
-$('#message').prepend("<div class='alert alert-danger alert-dismissable' style='margin-left:250px';><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Please fill all the fields.</div>");
-return false;
-                    }
-
-                }
+         
 
 
         </script>
 
 
         <!-- jQuery -->
-        <script src="../js/jquery.min.js"></script>
+        
 
         <!-- Bootstrap Core JavaScript -->
         <script src="../js/bootstrap.min.js"></script>

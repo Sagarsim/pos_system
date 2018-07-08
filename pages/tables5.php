@@ -22,7 +22,7 @@ include "sidepanel.php";
                 if(strpos($url, 'error=success_add') !== false){?>
                     <div class="alert alert-success alert-dismissable">
                                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                   New stock added successfully.
+                                                   New Purchase order added successfully.
                                                 </div>
                 <?php }
                 elseif(strpos($url, 'error=success_edit') !== false){?>
@@ -45,10 +45,10 @@ include "sidepanel.php";
                                     <col width="130">
 
                                         <thead>
-                                            <tr>    <th>Date</th>
-                                            <th>Customer Name</th>
+                                            <tr>    
+                                            
                                                   <th>Customer Name</th>
-                                                  <th>Employee Name</th>
+                                                  <th>Employee</th>
                                                   <th>Total Amount</th>
                                                   <th>Date of purchase</th>
                                                   
@@ -61,26 +61,27 @@ include "sidepanel.php";
                                             <?php
                                             $sql = "SELECT * FROM `tbl_transation_header`";
                                             $result = $conn->query($sql);
+                                            
                                             while($row=$result->fetch_assoc()){?>
 
                                         <tr class="odd gradeX">
-                                        <td><?php echo $row['date_time'];?></td>
-                                        <td><?php echo $row['customer_id'];?></td>
-                                                <td><?php echo $row['user_id'];?></td>
+                                        
+                                                <td><?php echo $row['customer_name'];?></td>
+                                                <td><?php echo $row['employee_uname'];?></td>
                                                 <td><?php echo $row['total_amt'];?></td>
                                                 <td><?php echo $row['date_time'];?></td>
                                                 
                                                 <td class="center">
                                                       <form action="forms5.php" method="POST">
-                                                      <input type="hidden" value="<?php echo $row['id']?>" name="detailid">
+                                                      <input type="hidden" value="<?php echo $row['invoice']?>" name="detailid">
                                                       <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Details</button>
                                                       </form>
                                                   </td>
                                                   
                                                   <td class="center">
                                                       <form action="delete_user.php" method="POST">
-                                                      <input type="hidden" value="<?php echo $row['id']?>" name="deleteid">
-                                                      <button type="submit" onclick="return confirm_delete()" class="btn btn-outline btn-danger" name="deletebtn_stock">Delete</button>
+                                                      <input type="hidden" value="<?php echo $row['invoice']?>" name="deleteid">
+                                                      <button type="submit" onclick="return confirm_delete()" class="btn btn-outline btn-danger" name="deletebtn_order">Delete</button>
                                                     </form>
                                                 </td>
                                        </tr>

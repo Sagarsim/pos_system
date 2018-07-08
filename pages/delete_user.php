@@ -52,5 +52,18 @@ if(isset($_POST['deletebtn'])){
             
         
         }
+
+        if(isset($_POST['deletebtn_order'])){
+            session_start();
+            
+            $deleteid = $_POST['deleteid'];
+            
+            
+            $sql = "DELETE FROM `tbl_transation_header` WHERE `invoice`=$deleteid";
+            $result = $conn->query($sql);
+            header("Location: tables5.php?error=success_delete");
+                
+            
+            }
     
     
