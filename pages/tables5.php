@@ -9,7 +9,7 @@ include "sidepanel.php";
                     <button type="submit" class="btn btn-primary btn-lg" style="float:right;margin:30px 20px 0px 0px;" name="addbtn">
                         <i class="fa fa-edit"></i> New Purchase Order</button></form>
                         
-                        <h1 class="page-header">Purchase Order Details</h1>
+                        <h1 class="page-header">Purchase Orders</h1>
 
                     </div>
                     <!-- /.col-lg-12 -->
@@ -46,14 +46,14 @@ include "sidepanel.php";
 
                                         <thead>
                                             <tr>    
-                                            
+                                                    <th>Invoice No</th>
                                                   <th>Customer Name</th>
                                                   <th>Employee</th>
                                                   <th>Total Amount</th>
                                                   <th>Date of purchase</th>
                                                   
                                                   <th>Details</th>
-                                                  
+                                                  <th>Download</th>
                                                   <th>Delete</th>
                                             </tr>
                                         </thead>
@@ -65,16 +65,23 @@ include "sidepanel.php";
                                             while($row=$result->fetch_assoc()){?>
 
                                         <tr class="odd gradeX">
-                                        
+                                                <td><?php echo $row['invoice'];?></td>
                                                 <td><?php echo $row['customer_name'];?></td>
                                                 <td><?php echo $row['employee_uname'];?></td>
                                                 <td><?php echo $row['total_amt'];?></td>
                                                 <td><?php echo $row['date_time'];?></td>
                                                 
                                                 <td class="center">
-                                                      <form action="forms5.php" method="POST">
+                                                      <form action="bill.php" method="POST">
                                                       <input type="hidden" value="<?php echo $row['invoice']?>" name="detailid">
                                                       <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Details</button>
+                                                      </form>
+                                                  </td>
+
+                                                  <td class="center">
+                                                      <form action="demopdf.php" method="POST">
+                                                      <input type="hidden" value="<?php echo $row['invoice']?>" name="detailid">
+                                                      <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Download</button>
                                                       </form>
                                                   </td>
                                                   
