@@ -8,7 +8,7 @@ include "sidepanel.php";
                         <form action="forms2.php" method="POST">
                     <button type="submit" class="btn btn-danger btn-circle btn-lg" style="float:right;margin:30px 20px 0px 0px;" name="addbtn">
                         <i class="fa  fa-cart-plus"></i></button></form>
-                        <a href="export_pdf2.php"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
+                        <a href="pdflib.php?file=items"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
                             <i class="fa fa-print"></i> Download as PDF</button></a>
                         <a href="export_excel2.php"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
                             <i class="fa fa-table"></i> Download as Excelsheet</button></a>

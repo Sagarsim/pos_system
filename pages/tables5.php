@@ -79,7 +79,7 @@ include "sidepanel.php";
                                                   </td>
 
                                                   <td class="center">
-                                                      <form action="demopdf.php" method="POST">
+                                                      <form action="pdflib.php" method="POST">
                                                       <input type="hidden" value="<?php echo $row['invoice']?>" name="detailid">
                                                       <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Download</button>
                                                       </form>

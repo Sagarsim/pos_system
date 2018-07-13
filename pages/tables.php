@@ -9,7 +9,7 @@ include "sidepanel.php";
                         <form action="forms.php" method="POST">
                     <button type="submit" class="btn btn-danger btn-circle btn-lg" style="float:right;margin:30px 20px 0px 0px;" name="addbtn">
                         <i class="fa  fa-user-plus"></i></button></form>
-                        <a href="export_pdf.php"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
+                        <a href="pdflib.php?file=users"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
                             <i class="fa fa-print"></i> Download as PDF</button></a>
                         <a href="export_excel.php"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
                             <i class="fa fa-table"></i> Download as Excelsheet</button></a>
@@ -49,8 +49,8 @@ include "sidepanel.php";
                                     
                                         <thead>
                                             <tr>
-                                                <th>Firstname</th>
-                                                <th>Lastname</th>
+                                                <th>Name</th>
+                                                <th>Username</th>
                                                 <th>Status</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
@@ -63,8 +63,8 @@ include "sidepanel.php";
                                             while($row=$result->fetch_assoc()){?>
                                             
                                             <tr class="odd gradeX">
-                                                <td><?php echo $row['fname'];?></td>
-                                                <td><?php echo $row['lname'];?></td>
+                                                <td><?php echo $row['fname']." ".$row['lname'];?></td>
+                                                <td><?php echo $row['uname'];?></td>
                                                 <td><?php 
                                                 if($row['status'] == 1){
                                                     echo 'Active';

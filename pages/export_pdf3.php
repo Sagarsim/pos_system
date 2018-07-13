@@ -32,18 +32,18 @@ if(!isset($_SESSION["id"])){
           <tr>
             <th class="no">#</th>
             <th class="desc">Item Name</th>
-            <th class="total">Description</th>
-            <th class="desc">ERP code</th>
-            <th class="total">UOM</th>
-            <th class="desc">Item Price</th>
-            <th class="total">Status</th>
+            <th class="total">Employee</th>
+            <th class="desc">Recorded Quantity</th>
+            <th class="total">Daily Sell Quantity</th>
+            <th class="desc">Available Quantity</th>
+            <th class="total">Date</th>
             
           </tr>
         </thead>
         <tbody>
         <?php
         
-        $sql = "SELECT * FROM `tbl_items`";
+        $sql = "SELECT * FROM `tbl_item_stock`";
         $result = $conn->query($sql);
         
         $cnt = 1;
@@ -52,17 +52,11 @@ if(!isset($_SESSION["id"])){
           <tr>
             <td class="no"><?php echo $cnt++;?></td>
             <td class="desc"><?php echo $row['item_name'];?></td>
-            <td class="total"><?php echo $row['description'];?></td>
-            <td class="desc"><?php echo $row['erp_code'];?></td>
-            <td class="total"><?php echo $row['uom'];?></td>
-            <td class="desc"><?php echo $row['item_price'];?></td>
-            
-                    <td class="total"><?php 
-                    if($row['status'] == 1){
-                        echo 'Active';
-                    } else {
-                        echo 'Inactive';
-                    }?></td>
+            <td class="total"><?php echo $row['employee_uname'];?></td>
+            <td class="desc"><?php echo $row['recorded_quantity'];?></td>
+            <td class="total"><?php echo $row['daily_sell_quantity'];?></td>
+            <td class="desc"><?php echo $row['available_quantity'];?></td>
+            <td class="total"><?php echo $row['date_time'];?></td>
             
           </tr>
 

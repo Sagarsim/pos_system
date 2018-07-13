@@ -16,7 +16,7 @@
   
   body {
     position: relative;
-    width: 21cm;  
+   
     height: 29.7cm; 
     margin: 0 auto; 
     color: #555555;
@@ -43,7 +43,7 @@
   
   #company {
     
-    text-align: right;
+    text-align: center;
   }
   
   
@@ -123,25 +123,20 @@
   }
   
   table .desc {
-    text-align: left;
+    font-size: 1.2em;
+    text-align: center;
   }
-  
-  table .unit {
-    background: #DDDDDD;
-  }
-  
-  table .qty {
-  }
-  
   table .total {
+    font-size: 1.2em;
+    text-align: center;
     background: #DDDDDD;
-    
   }
   
-  table td.unit,
-  table td.qty,
+  
+  table td.desc,
   table td.total {
     font-size: 1.2em;
+    text-align: left;
   }
   
   table tbody tr:last-child td {
