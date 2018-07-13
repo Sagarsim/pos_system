@@ -10,7 +10,7 @@ include "sidepanel.php";
                         <i class="fa fa-cart-plus"></i></button></form>
                         <a href="pdflib.php?file=stocks"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
                             <i class="fa fa-print"></i> Download as PDF</button></a>
-                        <a href="export_excel3.php"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
+                        <a href="export_excel4.php"><button type="button" class="btn btn-primary" style="float:right;margin:40px 20px 0px 0px;">
                             <i class="fa fa-table"></i> Download as Excelsheet</button></a>
                         <h1 class="page-header">Manage Stock</h1>
 

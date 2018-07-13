@@ -9,7 +9,7 @@ if(!isset($_SESSION["id"])){
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>jQuery Boilerplate</title>
+		<title>Items</title>
 	</head>
 	<body>
 		<table>
