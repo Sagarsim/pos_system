@@ -59,19 +59,21 @@ include "sidepanel.php";
                                            
                                             <label>Select Item</label>
                                             <label class="inline col-md-offset-3">Quantity</label>
+                                            
                                             <?php
                                                     while($row=$result->fetch_assoc()){?>
+                                                    <div class="row iteminfo">
+                                                        <div class="col-xs-4 checkbox">
+                                                            <label>
+                                                            <input type="checkbox" class="check" onchange="calc()" value="<?php echo $row['item_id'];?>" name="item_id[]"><?php echo $row['item_name'];?>
+                                                            <input type="hidden" class="iprice" value="<?php echo $row['item_price'];?>">
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <input style="margin-top:8px;"  type="text" class="qty" oninput="calc()" name="item_qt[<?php echo $row['item_id'];?>]"> <?php echo " ".$row['uom'];?>
+                                                        </div>  
                                                         
-                                                    <div class="checkbox">
-                                                        <label>
-                                                        <input type="checkbox" value="<?php echo $row['item_id'];?>" name="item_id[]"><?php echo $row['item_name'];?>
-                                                        </label>
-                                                        
-                                                        <label class="col-md-offset-3">
-                                                        <input class="inline" type="text" name="item_qt[<?php echo $row['item_id'];?>]"> <?php echo " ".$row['uom'];?>
-                                                        </label>
                                                     </div>
-                                                
                                                    <?php }?>
 
                                             
@@ -79,7 +81,7 @@ include "sidepanel.php";
                                             
                                             <label>Total Amount</label>
                                             <div class="form-group input-group">
-                                                <input type="text" class="form-control" name="total_amt">
+                                                <input type="text" class="form-control" name="total_amt" id="tot_amt">
                                                 <span class="input-group-addon">.00</span>
                                             </div>
                                                
@@ -124,20 +126,25 @@ include "sidepanel.php";
                var count = checkboxes.filter(':checked').length;
                 if(count == 0){
                     $('#message').html("");
-                    $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='margin-left:250px';><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Please Select an Item</div>");
+                    $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='margin-left:250px';><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Please select an item and enter its quantity</div>");
                     return false;
                     
-           }
-                if(document.myForm.total_amt.value == ""){
-                    $('#message').html("");
-                    $('#message').prepend("<div class='alert alert-danger alert-dismissable' style='margin-left:250px';><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Please enter total amount</div>");
-                    return false;
-
                 }
-
-            }
             
-
+            }
+            function calc(){
+            var sum = 0;
+           $('.iteminfo').each(function(){
+                if( $(this).find('.check').is(':checked')){
+                    sum+= $(this).find('.iprice').val()*$(this).find('.qty').val();
+                        }
+                    
+                });
+                    
+                $('input#tot_amt').val(sum);
+                $('input#tot_amt').text(sum);
+           
+            }
 
         </script>
 
