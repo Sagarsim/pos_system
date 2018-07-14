@@ -5,8 +5,8 @@ if(!isset($_SESSION["id"])){
     header("Location: login.php?error=unauthorised");
     exit();
 }
-//$invoiceno = $_POST['detailid'];
-$invoiceno=24;
+$invoiceno = $_POST['detailid'];
+
 $sql = "SELECT * FROM `tbl_transation_header` `tth`
         INNER JOIN `tbl_transation_detail` `ttd` ON `tth`.`invoice` = `ttd`.`invoice`
         INNER JOIN `tbl_items` `ti` ON `ttd`.`item_id` = `ti`.`item_id`
