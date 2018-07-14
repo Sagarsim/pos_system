@@ -81,7 +81,7 @@ include "sidepanel.php";
                                             
                                             <label>Total Amount</label>
                                             <div class="form-group input-group">
-                                                <input type="text" class="form-control" name="total_amt" id="tot_amt">
+                                                <input type="text" class="form-control" name="total_amt" id="tot_amt" readonly>
                                                 <span class="input-group-addon">.00</span>
                                             </div>
                                                
