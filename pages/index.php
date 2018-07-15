@@ -115,28 +115,20 @@ include "sidepanel.php";
                 <!-- /.row -->
     
                 <div class="row">
-                    <div class="col-lg-8">
-                        
+                    <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart 
-                                
+                                Area Chart Example
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div class="row">
-                                    
-                                    <div class="col-lg-10">
-                                        <div id="morris-bar-chart"></div>
-                                    </div>
-                                    <!-- /.col-lg-8 (nested) -->
-                                </div>
-                                <!-- /.row -->
+                                <div id="morris-area-chart"></div>
                             </div>
                             <!-- /.panel-body -->
                         </div>
                         <!-- /.panel -->
                     </div>
+                    <!-- /.col-lg-6 -->
                 </div>
             </div>
             <!-- /#page-wrapper -->
@@ -156,7 +148,7 @@ include "sidepanel.php";
          
         <script src="../js/raphael.min.js"></script>
         <script src="../js/morris.min.js"></script>
-        <script src="../js/morris-bar.js"></script>
+        <script src="../js/morris-area.js"></script>
 
         <!-- Custom Theme JavaScript -->
         <script src="../js/startmin.js"></script>
