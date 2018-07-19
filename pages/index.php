@@ -118,11 +118,12 @@ include "sidepanel.php";
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Area Chart Example
+                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                                Purchase Item Chart
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div id="morris-area-chart"></div>
+                                <div id="morris-bar-chart"></div>
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -148,7 +149,7 @@ include "sidepanel.php";
          
         <script src="../js/raphael.min.js"></script>
         <script src="../js/morris.min.js"></script>
-        <script src="../js/morris-area.js"></script>
+        <script src="../js/morris-bar.js"></script>
 
         <!-- Custom Theme JavaScript -->
         <script src="../js/startmin.js"></script>
