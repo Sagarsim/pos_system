@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2018 at 05:22 PM
+-- Generation Time: Jul 19, 2018 at 03:18 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -69,8 +69,9 @@ CREATE TABLE `tbl_items` (
 --
 
 INSERT INTO `tbl_items` (`item_id`, `item_name`, `description`, `erp_code`, `uom`, `item_price`, `status`) VALUES
-(4, 'Book', 'asdfasddddddddddddddddddfasddd', '12122', 'pcs', 1200, '1'),
-(5, 'Pepsi', 'safasdfgdsfgsdfkgsdfgskdjfhkj', '12122', 'ctn', 20, '1');
+(4, 'Book', 'Artificial Intelligence', '12122', 'ctn', 1200, '1'),
+(5, 'Pepsi', 'Soft drink', '12122', 'ctn', 20, '1'),
+(6, 'Pendrive', 'data storage device', '12122', 'pcs', 1000, '1');
 
 -- --------------------------------------------------------
 
@@ -94,8 +95,9 @@ CREATE TABLE `tbl_item_stock` (
 --
 
 INSERT INTO `tbl_item_stock` (`id`, `item_id`, `item_name`, `employee_uname`, `date_time`, `recorded_quantity`, `daily_sell_quantity`, `available_quantity`) VALUES
-(3, 4, 'Book', 'sagar1234', '2018-07-08 17:51:46', 12, 0, 12),
-(4, 5, 'Pepsi', 'sagar1234', '2018-07-13 05:14:48', 20, 0, 20);
+(6, 4, 'Book', 'sagar1234', '2018-07-19 13:09:41', 20, 0, 11),
+(7, 5, 'Pepsi', 'sagar1234', '2018-07-19 13:13:19', 50, 0, 20),
+(8, 6, 'Pendrive', 'sagar1234', '2018-07-19 13:13:19', 15, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -116,11 +118,19 @@ CREATE TABLE `tbl_transation_detail` (
 --
 
 INSERT INTO `tbl_transation_detail` (`id`, `invoice`, `item_id`, `purchase_quantity`, `total_amt`) VALUES
-(20, 22, '4', 5, 600),
-(21, 22, '5', 6, 600),
-(22, 23, '4', 1, 60),
-(23, 24, '4', 5, 4000),
-(24, 24, '5', 3, 4000);
+(40, 33, '4', 5, 11100),
+(41, 33, '5', 5, 11100),
+(42, 33, '6', 5, 11100),
+(43, 34, '4', 1, 2600),
+(44, 34, '5', 20, 2600),
+(45, 34, '6', 1, 2600),
+(46, 35, '4', 2, 3700),
+(47, 35, '5', 15, 3700),
+(48, 35, '6', 1, 3700),
+(49, 36, '4', 1, 1300),
+(50, 36, '5', 5, 1300),
+(51, 37, '5', 10, 4200),
+(52, 37, '6', 4, 4200);
 
 -- --------------------------------------------------------
 
@@ -141,9 +151,11 @@ CREATE TABLE `tbl_transation_header` (
 --
 
 INSERT INTO `tbl_transation_header` (`invoice`, `customer_name`, `employee_uname`, `total_amt`, `date_time`) VALUES
-(22, 'Sagar', 'sagar1234', 600, '2018-07-08 17:47:55'),
-(23, 'Sagar', 'sagar1234', 60, '2018-07-08 17:50:52'),
-(24, 'Sagar', 'sagar1234', 4000, '2018-07-08 17:51:31');
+(33, 'Sagar', 'sagar1234', 11100, '2018-07-19 13:04:07'),
+(34, 'Sagar', 'sagar1234', 2600, '2018-07-19 13:06:33'),
+(35, 'Sagar', 'sagar1234', 3700, '2018-07-19 13:07:25'),
+(36, 'Sagar', 'sagar1234', 1300, '2018-07-19 13:09:41'),
+(37, 'Sagar', 'sagar1234', 4200, '2018-07-19 13:13:19');
 
 -- --------------------------------------------------------
 
@@ -228,25 +240,25 @@ ALTER TABLE `customer_table`
 -- AUTO_INCREMENT for table `tbl_items`
 --
 ALTER TABLE `tbl_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_item_stock`
 --
 ALTER TABLE `tbl_item_stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_transation_detail`
 --
 ALTER TABLE `tbl_transation_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `tbl_transation_header`
 --
 ALTER TABLE `tbl_transation_header`
-  MODIFY `invoice` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `invoice` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
