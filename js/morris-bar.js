@@ -3,6 +3,7 @@ getdata = new XMLHttpRequest();
         if (this.readyState==4 && this.status==200) {
             final = jQuery.parseJSON(this.responseText);
             fdata = [];
+            allitems = [];
             for(i=0;i<final[2].length;i++){
                 obj = new Object();
                 
@@ -13,15 +14,17 @@ getdata = new XMLHttpRequest();
                 
                 fdata.push(obj);
             }
-            console.log(fdata);
+            for(i=0;i<final[4].length;i++){
+                allitems.push(final[4][i]);
+            }
+            
             Morris.Bar({
                 element: 'morris-bar-chart',
                 data: fdata,
                 xkey: 'period',
-                ykeys: ['Book', 'Pepsi', 'Pendrive'],
-                labels: ['Book', 'Pepsi', 'Pendrive'],
-               
-                hideHover: 'auto',
+                ykeys: allitems,
+                labels: allitems,
+               hideHover: 'auto',
                 resize: true
             })
         

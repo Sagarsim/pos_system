@@ -9,6 +9,9 @@ $result=$conn->query($sql);
 $data = array();
 $iname = array();
 $date = array();
+$eachdate = array();
+$unique_date = array();
+$allitems = array();
 $i = 0;
 while($row = $result->fetch_assoc()){
 $data[$i] = $row['total'];
@@ -19,9 +22,6 @@ $i++;
 
 $sql2 = "SELECT DISTINCT `date_time` FROM `tbl_transation_header`";
 $result2 = $conn->query($sql2);
-
-$eachdate = array();
-$unique_date = array();
 $y = 0;
 while($unidate = $result2->fetch_assoc()){
         $unique_date[$y] = $unidate['date_time'];
@@ -35,7 +35,15 @@ while($unidate = $result2->fetch_assoc()){
         $y++;
 }
 
-$final = array($data, $iname, $unique_date, $eachdate);
+$sql3 = "SELECT `item_name` FROM `tbl_items`";
+$result3 = $conn->query($sql3);
+$i = 0;
+while($row = $result3->fetch_assoc()){
+        $allitems[$i] = $row['item_name'];
+       $i++;
+}
+
+$final = array($data, $iname, $unique_date, $eachdate, $allitems);
 echo json_encode($final);
 
 
