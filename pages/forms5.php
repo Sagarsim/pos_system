@@ -4,25 +4,11 @@ include "sidepanel.php";
 
  <style>
 
-#overlay {
-    
-    
+#overlay, #overlay2 {
     display: none;
     left: 0;
     right: 0;
     bottom: 0;
-    
-    z-index: 2;
-    cursor: pointer;
-}
-#overlay2 {
-    
-    
-    display: none;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    
     z-index: 2;
     cursor: pointer;
 }
@@ -68,12 +54,12 @@ include "sidepanel.php";
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form role="form" name="myForm" action="add_order.php" method="POST" id="checkcnt">
+                                        <form role="form" name="myForm" action="add_order.php" onsubmit="return validate()" method="POST" id="checkcnt">
                                             <div class="form-group">
                                             
                                             <label>Selected Customer</label>
                                            
-                                                <input type="text" class="form-control" name="cname" readonly>
+                                                <input type="text" class="form-control" id="cus" name="cname" readonly>
                                               </div>
                                               <div class="form-group">
                                                 <button type="button" class="btn btn-default" onclick="sCustomers()">Select Customer</button>
@@ -142,7 +128,7 @@ include "sidepanel.php";
                     
                                 <div class="dataTable_wrapper">
                                 
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <table class="table table-striped table-bordered table-hover dataTables-example">
                                     
                                         <thead>
                                             <tr>
@@ -230,7 +216,7 @@ include "sidepanel.php";
 
                                 <div class="dataTable_wrapper">
 
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <table class="table table-striped table-bordered table-hover dataTables-example">
                                     <col width="130">
 
                                         <thead>
@@ -265,11 +251,9 @@ include "sidepanel.php";
                                                 } else {
                                                     echo 'Inactive';
                                                 }?></td>
-                                                <td class="center">
-                                                      <form action="forms3.php" method="POST">
-                                                      <input type="hidden" value="<?php echo $row['customer_id']?>" name="detailid">
-                                                      <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Details</button>
-                                                      </form>
+                                                <td class="center cusi">
+                                                <input type="button" class="btn btn-outline btn-success addedC" id="<?php echo $row['customer_id'];?>" value="Select">
+                                                <input type="hidden" id="cname" value="<?php echo $row['name'];?>">
                                                   </td>
                                                  
                                        </tr>
@@ -301,7 +285,18 @@ include "sidepanel.php";
         <script src="../js/jquery.min.js"></script>
         <script type="text/javascript">
             
-          
+          function validate(){
+              if($('#cus').val() == ''){
+                  $('#message').prepend('<div class="alert alert-danger alert-dismissable" style="margin-left:250px;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please select a customer</div>');
+                  return false;
+              }
+              else if($('#iadded').find('.iteminfo').length == 0){
+              
+                    $('#message').prepend('<div class="alert alert-danger alert-dismissable" style="margin-left:250px;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please select items and enter its quantity.</div>');
+                  return false;
+             
+              }
+          }
             function calc(){
             var sum = 0;
            $('#iadded>.iteminfo').each(function(){
@@ -312,12 +307,11 @@ include "sidepanel.php";
                 });
                     
                 $('input#tot_amt').val(sum);
-                $('input#tot_amt').text(sum);
+               
            
             }
             function sItems() {
-                $('#overlay2>.table').removeAttr('id');
-                    $('#overlay>.table').attr('id', 'dataTables-example');
+               
                     document.getElementById("overlay").style.display = "block";
                     document.getElementById("overlay2").style.display = "none";
                    
@@ -327,8 +321,7 @@ include "sidepanel.php";
                 }
 
                 function sCustomers() {
-                    $('#overlay>.table').removeAttr('id');
-                    $('#overlay2>.table').attr('id', 'dataTables-example');
+                  
                     document.getElementById("overlay2").style.display = "block";
                     document.getElementById("overlay").style.display = "none";
                     
@@ -336,7 +329,7 @@ include "sidepanel.php";
                 }
 
                 $(document).ready(function() {
-                                $('#dataTables-example').DataTable({
+                                $('.dataTables-example').DataTable({
                                         responsive: true
                                 });
                             });
@@ -353,7 +346,7 @@ include "sidepanel.php";
                         }
                     })
                 }
-                else if( $(this).val() == 'Added'){
+                else {
                    
                     $(this).val('Add');
                     rid = $(this).attr('id');
@@ -366,6 +359,23 @@ include "sidepanel.php";
                calc();
             });
             
+            $('.addedC').click(function(){
+                if($(this).val() == 'Select'){
+                    cid = $(this).attr('id');
+                    $('.cusi').each(function(){
+                        if($(this).find('.addedC').attr('id') == cid){
+                            $(this).find('.addedC').val('Selected');
+                            $('#cus').val($(this).find('#cname').val());
+                        } else {
+                            $(this).find('.addedC').val('Select');
+                        }
+                    })
+                } else {
+                    $(this).val('Select');
+                    $('#cus').val('');
+                }
+                
+            })
         </script>
 
 
