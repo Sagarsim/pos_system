@@ -20,7 +20,7 @@ $date[$i] = $row['date_time'];
 $i++;
 }
 
-$sql2 = "SELECT DISTINCT `date_time` FROM `tbl_transation_header`";
+$sql2 = "SELECT * FROM ( SELECT DISTINCT `date_time`, `invoice` FROM `tbl_transation_header` ORDER BY `invoice` DESC LIMIT 10 ) sub ORDER BY `invoice` ASC";
 $result2 = $conn->query($sql2);
 $y = 0;
 while($unidate = $result2->fetch_assoc()){
@@ -35,7 +35,7 @@ while($unidate = $result2->fetch_assoc()){
         $y++;
 }
 
-$sql3 = "SELECT `item_name` FROM `tbl_items`";
+$sql3 = "SELECT DISTINCT `item_name` FROM `tbl_transation_detail` `ttd` INNER JOIN `tbl_items` `ti` ON `ti`.`item_id` = `ttd`.`item_id`";
 $result3 = $conn->query($sql3);
 $i = 0;
 while($row = $result3->fetch_assoc()){

@@ -54,6 +54,7 @@ include "sidepanel.php";
                                                   
                                                   <th>Details</th>
                                                   <th>Download</th>
+                                                  <th>Mail</th>
                                                   <th>Delete</th>
                                             </tr>
                                         </thead>
@@ -82,6 +83,13 @@ include "sidepanel.php";
                                                       <form action="pdflib.php" method="POST">
                                                       <input type="hidden" value="<?php echo $row['invoice']?>" name="detailid">
                                                       <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Download</button>
+                                                      </form>
+                                                  </td>
+
+                                                  <td class="center">
+                                                      <form action="#" method="POST">
+                                                      <input type="hidden" value="<?php echo $row['invoice']?>" name="detailid">
+                                                      <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Mail</button>
                                                       </form>
                                                   </td>
                                                   

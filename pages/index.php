@@ -119,7 +119,7 @@ include "sidepanel.php";
                         <div class="panel panel-default">
                             <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i>
-                                Purchase Item Chart
+                                Purchase Order Chart (Last 10 purchase orders)
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
