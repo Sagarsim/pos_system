@@ -1,7 +1,6 @@
 <?php
 
-require_once '../dompdf/autoload.inc.php';
-Dompdf\Autoloader::register();
+require '../vendor/autoload.php';
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 

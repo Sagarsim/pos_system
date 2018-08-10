@@ -87,9 +87,9 @@ include "sidepanel.php";
                                                   </td>
 
                                                   <td class="center">
-                                                      <form action="#" method="POST">
+                                                      <form action="mailbill.php" method="POST">
                                                       <input type="hidden" value="<?php echo $row['invoice']?>" name="detailid">
-                                                      <button type="submit" class="btn btn-outline btn-success" name="detailbtn">Mail</button>
+                                                      <button type="submit" class="btn btn-outline btn-success" name="mailbtn">Mail</button>
                                                       </form>
                                                   </td>
                                                   
