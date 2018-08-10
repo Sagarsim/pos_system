@@ -11,6 +11,7 @@ $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 if(isset($_POST['detailbtn'])){
     ob_start();
 include 'bill.php';
+$filename = 'invoice'.$invoiceno.'.pdf';
 $output = ob_get_clean();
 $dompdf->loadHtml($output);
 // (Optional) Setup the paper size and orientation
@@ -59,9 +60,12 @@ $dompdf->setPaper('A2', 'portrait');
 
 // Render the HTML as PDF
 $dompdf->render();
-
+if(isset($_POST['detailbtn'])){
 // Output the generated PDF to Browser
-$dompdf->stream();
+$dompdf->stream($filename);
+} else {
+    $dompdf->stream();
+}
 
 
 ?>
